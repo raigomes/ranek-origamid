@@ -5,15 +5,22 @@ import { Link } from "react-router-dom";
 
 const Produtos = () => {
   const [produtos, setProdutos] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true)
     fetch("https://ranekapi.origamid.dev/json/api/produto")
       .then((response) => response.json())
-      .then((data) => setProdutos(data));
+      .then((data) => {
+        setProdutos(data)
+        setLoading(false)
+      });
   }, []);
 
+  if (loading) return <div className="loading"></div>;
+
   return (
-    <section className={styles.produtos}>
+    <section className={`${styles.produtos} animeLeft`}>
       <Head title="Ranek" description="Curso React Completo | Origamid" />
       {produtos.map(produto => (
         <Link to={`produto/${produto.id}`} key={produto.id}>

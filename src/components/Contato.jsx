@@ -3,7 +3,7 @@ import Head from './Head'
 
 const Contato = () => {
   return (
-    <section className={styles.contato}>
+    <section className={`${styles.contato} animeLeft`}>
       <Head title="Ranek | Contato" description="Curso React Completo | Origamid" />
       <img src='https://avatars.githubusercontent.com/u/3885994?v=4' />
       <section className={styles.dados}>
