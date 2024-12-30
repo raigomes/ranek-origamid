@@ -18,24 +18,26 @@ const Produto = () => {
       });
   }, [params]);
 
+  if (produto === null) return null;
   if (loading) return <div className="loading"></div>;
 
   return (
-    produto && (
-      <section className={`${styles.produto} animeLeft`}>
-        <Head title={`Ranek | ${params.id}`} description="Curso React Completo | Origamid" />
-        <div className="fotos">
-          {produto.fotos.map((foto) => (
-            <img key={foto.titulo} src={foto.src} alt={foto.titulo} />
-          ))}
-        </div>
-        <div className="content">
-          <h1>{produto.nome}</h1>
-          <span className={styles.preco}>R$ {produto.preco}</span>
-          <p className={styles.descricao}>{produto.descricao}</p>
-        </div>
-      </section>
-    )
+    <section className={`${styles.produto} animeLeft`}>
+      <Head
+        title={`Ranek | ${params.id}`}
+        description="Curso React Completo | Origamid"
+      />
+      <div className="fotos">
+        {produto.fotos.map((foto) => (
+          <img key={foto.titulo} src={foto.src} alt={foto.titulo} />
+        ))}
+      </div>
+      <div className="content">
+        <h1>{produto.nome}</h1>
+        <span className={styles.preco}>R$ {produto.preco}</span>
+        <p className={styles.descricao}>{produto.descricao}</p>
+      </div>
+    </section>
   );
 };
 

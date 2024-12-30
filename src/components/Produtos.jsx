@@ -4,7 +4,7 @@ import Head from "./Head";
 import { Link } from "react-router-dom";
 
 const Produtos = () => {
-  const [produtos, setProdutos] = useState([]);
+  const [produtos, setProdutos] = useState(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -17,6 +17,7 @@ const Produtos = () => {
       });
   }, []);
 
+  if (produtos === null) return null
   if (loading) return <div className="loading"></div>;
 
   return (
