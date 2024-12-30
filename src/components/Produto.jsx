@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./Produto.module.css";
 import { useParams } from "react-router-dom";
+import Head from "./Head";
 
 const Produto = () => {
   const [produto, setProduto] = useState(null);
@@ -22,6 +23,7 @@ const Produto = () => {
   return (
     produto && (
       <section className={`${styles.produto} animeLeft`}>
+        <Head title={`Ranek | ${params.id}`} description="Curso React Completo | Origamid" />
         <div className="fotos">
           {produto.fotos.map((foto) => (
             <img key={foto.titulo} src={foto.src} alt={foto.titulo} />
